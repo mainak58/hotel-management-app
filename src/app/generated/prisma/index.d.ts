@@ -2096,13 +2096,11 @@ export namespace Prisma {
   export type HotelAvgAggregateOutputType = {
     id: number | null
     rating: number | null
-    userId: number | null
   }
 
   export type HotelSumAggregateOutputType = {
     id: number | null
     rating: number | null
-    userId: number | null
   }
 
   export type HotelMinAggregateOutputType = {
@@ -2114,7 +2112,7 @@ export namespace Prisma {
     have_spa: boolean | null
     have_pool: boolean | null
     image_url: string | null
-    userId: number | null
+    userId: string | null
   }
 
   export type HotelMaxAggregateOutputType = {
@@ -2126,7 +2124,7 @@ export namespace Prisma {
     have_spa: boolean | null
     have_pool: boolean | null
     image_url: string | null
-    userId: number | null
+    userId: string | null
   }
 
   export type HotelCountAggregateOutputType = {
@@ -2146,13 +2144,11 @@ export namespace Prisma {
   export type HotelAvgAggregateInputType = {
     id?: true
     rating?: true
-    userId?: true
   }
 
   export type HotelSumAggregateInputType = {
     id?: true
     rating?: true
-    userId?: true
   }
 
   export type HotelMinAggregateInputType = {
@@ -2287,7 +2283,7 @@ export namespace Prisma {
     have_spa: boolean
     have_pool: boolean
     image_url: string | null
-    userId: number
+    userId: string | null
     _count: HotelCountAggregateOutputType | null
     _avg: HotelAvgAggregateOutputType | null
     _sum: HotelSumAggregateOutputType | null
@@ -2385,7 +2381,7 @@ export namespace Prisma {
       have_spa: boolean
       have_pool: boolean
       image_url: string | null
-      userId: number
+      userId: string | null
     }, ExtArgs["result"]["hotel"]>
     composites: {}
   }
@@ -2818,7 +2814,7 @@ export namespace Prisma {
     readonly have_spa: FieldRef<"Hotel", 'Boolean'>
     readonly have_pool: FieldRef<"Hotel", 'Boolean'>
     readonly image_url: FieldRef<"Hotel", 'String'>
-    readonly userId: FieldRef<"Hotel", 'Int'>
+    readonly userId: FieldRef<"Hotel", 'String'>
   }
     
 
@@ -3394,13 +3390,13 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
+    clerkId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
-    clerkId?: StringNullableFilter<"User"> | string | null
     hotels?: HotelListRelationFilter
-  }, "id" | "email">
+  }, "id" | "email" | "clerkId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -3436,7 +3432,7 @@ export namespace Prisma {
     have_spa?: BoolFilter<"Hotel"> | boolean
     have_pool?: BoolFilter<"Hotel"> | boolean
     image_url?: StringNullableFilter<"Hotel"> | string | null
-    userId?: IntFilter<"Hotel"> | number
+    userId?: StringNullableFilter<"Hotel"> | string | null
     touristId?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
@@ -3449,7 +3445,7 @@ export namespace Prisma {
     have_spa?: SortOrder
     have_pool?: SortOrder
     image_url?: SortOrderInput | SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     touristId?: UserOrderByWithRelationInput
   }
 
@@ -3465,7 +3461,7 @@ export namespace Prisma {
     have_spa?: BoolFilter<"Hotel"> | boolean
     have_pool?: BoolFilter<"Hotel"> | boolean
     image_url?: StringNullableFilter<"Hotel"> | string | null
-    userId?: IntFilter<"Hotel"> | number
+    userId?: StringNullableFilter<"Hotel"> | string | null
     touristId?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
@@ -3478,7 +3474,7 @@ export namespace Prisma {
     have_spa?: SortOrder
     have_pool?: SortOrder
     image_url?: SortOrderInput | SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: HotelCountOrderByAggregateInput
     _avg?: HotelAvgOrderByAggregateInput
     _max?: HotelMaxOrderByAggregateInput
@@ -3498,7 +3494,7 @@ export namespace Prisma {
     have_spa?: BoolWithAggregatesFilter<"Hotel"> | boolean
     have_pool?: BoolWithAggregatesFilter<"Hotel"> | boolean
     image_url?: StringNullableWithAggregatesFilter<"Hotel"> | string | null
-    userId?: IntWithAggregatesFilter<"Hotel"> | number
+    userId?: StringNullableWithAggregatesFilter<"Hotel"> | string | null
   }
 
   export type UserCreateInput = {
@@ -3571,7 +3567,7 @@ export namespace Prisma {
     have_spa?: boolean
     have_pool?: boolean
     image_url?: string | null
-    userId: number
+    userId?: string | null
   }
 
   export type HotelUpdateInput = {
@@ -3594,7 +3590,7 @@ export namespace Prisma {
     have_spa?: BoolFieldUpdateOperationsInput | boolean
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type HotelCreateManyInput = {
@@ -3606,7 +3602,7 @@ export namespace Prisma {
     have_spa?: boolean
     have_pool?: boolean
     image_url?: string | null
-    userId: number
+    userId?: string | null
   }
 
   export type HotelUpdateManyMutationInput = {
@@ -3628,7 +3624,7 @@ export namespace Prisma {
     have_spa?: BoolFieldUpdateOperationsInput | boolean
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3804,7 +3800,6 @@ export namespace Prisma {
   export type HotelAvgOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
-    userId?: SortOrder
   }
 
   export type HotelMaxOrderByAggregateInput = {
@@ -3834,7 +3829,6 @@ export namespace Prisma {
   export type HotelSumOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
-    userId?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4157,7 +4151,7 @@ export namespace Prisma {
     have_spa?: BoolFilter<"Hotel"> | boolean
     have_pool?: BoolFilter<"Hotel"> | boolean
     image_url?: StringNullableFilter<"Hotel"> | string | null
-    userId?: IntFilter<"Hotel"> | number
+    userId?: StringNullableFilter<"Hotel"> | string | null
   }
 
   export type UserCreateWithoutHotelsInput = {

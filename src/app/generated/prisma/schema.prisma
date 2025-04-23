@@ -18,7 +18,7 @@ model User {
   id      Int     @id @default(autoincrement())
   email   String  @unique
   name    String?
-  clerkId String?
+  clerkId String? @unique
   hotels  Hotel[]
 }
 
@@ -31,6 +31,6 @@ model Hotel {
   have_spa    Boolean @default(false)
   have_pool   Boolean @default(false)
   image_url   String?
-  touristId   User?   @relation(fields: [userId], references: [id])
-  userId      Int
+  userId      String?
+  touristId   User?   @relation(fields: [userId], references: [clerkId])
 }
