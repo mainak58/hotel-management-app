@@ -1,37 +1,77 @@
-import prisma from "@/lib/prisma";
-import { redirect } from "next/navigation";
-import React from "react";
+"use client";
 
-async function createPost(formData: FormData) {
-    "use server";
+import React, { ChangeEvent, useState } from "react";
 
-    const name = formData.get("name") as string;
-    const description = formData.get("description") as string;
-    const rating = Number(formData.get("rating"));
-    const location = formData.get("location") as string;
-    const have_spa = formData.get("have_spa") === "on";
-    const have_pool = formData.get("have_pool") === "on";
-    const image_url = formData.get("image_url") as string;
+function Page() {
+    const [image, setImages] = useState("");
+    const [formData, setFormData] = useState({
+        name: "",
+        description: "",
+        rating: "",
+        location: "",
+        have_spa: false,
+        have_pool: false,
+        price: "",
+        userId: null,
+    });
 
-    const data = {
-        name,
-        description,
-        rating,
-        location,
-        have_spa,
-        have_pool,
-        image_url,
+    function handleChange(e: ChangeEvent<HTMLInputElement>) {
+        const { name, value, type, checked } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: type === "checkbox" ? checked : value,
+        }));
+    }
+
+    const handleImg = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > 204800) {
+                alert("Image size should not exceed 200 KB");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImages(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
-    await prisma.hotel.create({ data: data });
+    async function submitButton(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault();
 
-    redirect("/");
-}
-function Page() {
+        try {
+            const res = await fetch("/api/hotels", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    description: formData.description,
+                    rating: Number(formData.rating),
+                    location: formData.location,
+                    image_url: image,
+                    have_spa: formData.have_spa,
+                    have_pool: formData.have_pool,
+                    price: Number(formData.price),
+                    userId: formData.userId,
+                }),
+            });
+
+            if (res.ok) {
+                console.log(formData);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
             <form
-                action={createPost}
+                onSubmit={submitButton}
                 className="w-full max-w-xl bg-white shadow-xl rounded-2xl p-8 space-y-6"
             >
                 <h2 className="text-2xl font-bold text-center text-gray-800">
@@ -43,7 +83,7 @@ function Page() {
                     { id: "description", label: "Description", type: "text" },
                     { id: "rating", label: "Rating", type: "number" },
                     { id: "location", label: "Location", type: "text" },
-                    { id: "image_url", label: "Image URL", type: "file" },
+                    { id: "price", label: "price", type: "number" },
                 ].map(({ id, label, type }) => (
                     <div key={id} className="space-y-1">
                         <label
@@ -56,17 +96,34 @@ function Page() {
                             type={type}
                             id={id}
                             name={id}
+                            onChange={handleChange}
                             className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                     </div>
                 ))}
 
+                <div>
+                    <label
+                        htmlFor="img"
+                        className="block text-sm font-medium text-gray-700"
+                    >
+                        Picture
+                    </label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onChange={handleImg}
+                    />
+                </div>
+
                 <div className="flex items-center space-x-4">
                     <label className="flex items-center gap-2 text-gray-700 font-medium">
                         <input
                             type="checkbox"
-                            id="have_spa"
                             name="have_spa"
+                            checked={formData.have_spa}
+                            onChange={handleChange}
                             className="accent-blue-500"
                         />
                         Spa Available
@@ -75,8 +132,9 @@ function Page() {
                     <label className="flex items-center gap-2 text-gray-700 font-medium">
                         <input
                             type="checkbox"
-                            id="have_pool"
                             name="have_pool"
+                            checked={formData.have_pool}
+                            onChange={handleChange}
                             className="accent-blue-500"
                         />
                         Pool Available

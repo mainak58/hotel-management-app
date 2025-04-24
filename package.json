@@ -6,7 +6,11 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "studio": "prisma studio",
+        "push": "prisma db push",
+        "reset": "prisma migrate reset",
+        "migrate-dev": "prisma migrate dev --name initial-state"
     },
     "prisma": {
         "seed": "tsx prisma/seed.ts"
