@@ -11,6 +11,7 @@ export async function POST(request: Request) {
         have_spa,
         have_pool,
         image_url,
+        price,
         userId,
     } = body;
 
@@ -24,6 +25,7 @@ export async function POST(request: Request) {
                 have_spa: have_spa,
                 have_pool: have_pool,
                 image_url: image_url,
+                price: price,
                 userId: userId ? userId : null,
             },
         });

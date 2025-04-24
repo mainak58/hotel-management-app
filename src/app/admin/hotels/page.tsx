@@ -11,6 +11,7 @@ function Page() {
         location: "",
         have_spa: false,
         have_pool: false,
+        price: "",
         userId: null,
     });
 
@@ -54,6 +55,7 @@ function Page() {
                     image_url: image,
                     have_spa: formData.have_spa,
                     have_pool: formData.have_pool,
+                    price: Number(formData.price),
                     userId: formData.userId,
                 }),
             });
@@ -81,6 +83,7 @@ function Page() {
                     { id: "description", label: "Description", type: "text" },
                     { id: "rating", label: "Rating", type: "number" },
                     { id: "location", label: "Location", type: "text" },
+                    { id: "price", label: "price", type: "number" },
                 ].map(({ id, label, type }) => (
                     <div key={id} className="space-y-1">
                         <label

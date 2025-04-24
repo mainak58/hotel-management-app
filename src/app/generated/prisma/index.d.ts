@@ -2096,11 +2096,13 @@ export namespace Prisma {
   export type HotelAvgAggregateOutputType = {
     id: number | null
     rating: number | null
+    price: number | null
   }
 
   export type HotelSumAggregateOutputType = {
     id: number | null
     rating: number | null
+    price: number | null
   }
 
   export type HotelMinAggregateOutputType = {
@@ -2113,6 +2115,7 @@ export namespace Prisma {
     have_pool: boolean | null
     image_url: string | null
     userId: string | null
+    price: number | null
   }
 
   export type HotelMaxAggregateOutputType = {
@@ -2125,6 +2128,7 @@ export namespace Prisma {
     have_pool: boolean | null
     image_url: string | null
     userId: string | null
+    price: number | null
   }
 
   export type HotelCountAggregateOutputType = {
@@ -2137,6 +2141,7 @@ export namespace Prisma {
     have_pool: number
     image_url: number
     userId: number
+    price: number
     _all: number
   }
 
@@ -2144,11 +2149,13 @@ export namespace Prisma {
   export type HotelAvgAggregateInputType = {
     id?: true
     rating?: true
+    price?: true
   }
 
   export type HotelSumAggregateInputType = {
     id?: true
     rating?: true
+    price?: true
   }
 
   export type HotelMinAggregateInputType = {
@@ -2161,6 +2168,7 @@ export namespace Prisma {
     have_pool?: true
     image_url?: true
     userId?: true
+    price?: true
   }
 
   export type HotelMaxAggregateInputType = {
@@ -2173,6 +2181,7 @@ export namespace Prisma {
     have_pool?: true
     image_url?: true
     userId?: true
+    price?: true
   }
 
   export type HotelCountAggregateInputType = {
@@ -2185,6 +2194,7 @@ export namespace Prisma {
     have_pool?: true
     image_url?: true
     userId?: true
+    price?: true
     _all?: true
   }
 
@@ -2284,6 +2294,7 @@ export namespace Prisma {
     have_pool: boolean
     image_url: string | null
     userId: string | null
+    price: number | null
     _count: HotelCountAggregateOutputType | null
     _avg: HotelAvgAggregateOutputType | null
     _sum: HotelSumAggregateOutputType | null
@@ -2315,6 +2326,7 @@ export namespace Prisma {
     have_pool?: boolean
     image_url?: boolean
     userId?: boolean
+    price?: boolean
     touristId?: boolean | Hotel$touristIdArgs<ExtArgs>
   }, ExtArgs["result"]["hotel"]>
 
@@ -2328,6 +2340,7 @@ export namespace Prisma {
     have_pool?: boolean
     image_url?: boolean
     userId?: boolean
+    price?: boolean
     touristId?: boolean | Hotel$touristIdArgs<ExtArgs>
   }, ExtArgs["result"]["hotel"]>
 
@@ -2341,6 +2354,7 @@ export namespace Prisma {
     have_pool?: boolean
     image_url?: boolean
     userId?: boolean
+    price?: boolean
     touristId?: boolean | Hotel$touristIdArgs<ExtArgs>
   }, ExtArgs["result"]["hotel"]>
 
@@ -2354,9 +2368,10 @@ export namespace Prisma {
     have_pool?: boolean
     image_url?: boolean
     userId?: boolean
+    price?: boolean
   }
 
-  export type HotelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "rating" | "location" | "have_spa" | "have_pool" | "image_url" | "userId", ExtArgs["result"]["hotel"]>
+  export type HotelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "rating" | "location" | "have_spa" | "have_pool" | "image_url" | "userId" | "price", ExtArgs["result"]["hotel"]>
   export type HotelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     touristId?: boolean | Hotel$touristIdArgs<ExtArgs>
   }
@@ -2382,6 +2397,7 @@ export namespace Prisma {
       have_pool: boolean
       image_url: string | null
       userId: string | null
+      price: number | null
     }, ExtArgs["result"]["hotel"]>
     composites: {}
   }
@@ -2815,6 +2831,7 @@ export namespace Prisma {
     readonly have_pool: FieldRef<"Hotel", 'Boolean'>
     readonly image_url: FieldRef<"Hotel", 'String'>
     readonly userId: FieldRef<"Hotel", 'String'>
+    readonly price: FieldRef<"Hotel", 'Int'>
   }
     
 
@@ -3281,7 +3298,8 @@ export namespace Prisma {
     have_spa: 'have_spa',
     have_pool: 'have_pool',
     image_url: 'image_url',
-    userId: 'userId'
+    userId: 'userId',
+    price: 'price'
   };
 
   export type HotelScalarFieldEnum = (typeof HotelScalarFieldEnum)[keyof typeof HotelScalarFieldEnum]
@@ -3433,6 +3451,7 @@ export namespace Prisma {
     have_pool?: BoolFilter<"Hotel"> | boolean
     image_url?: StringNullableFilter<"Hotel"> | string | null
     userId?: StringNullableFilter<"Hotel"> | string | null
+    price?: IntNullableFilter<"Hotel"> | number | null
     touristId?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
@@ -3446,6 +3465,7 @@ export namespace Prisma {
     have_pool?: SortOrder
     image_url?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
+    price?: SortOrderInput | SortOrder
     touristId?: UserOrderByWithRelationInput
   }
 
@@ -3462,6 +3482,7 @@ export namespace Prisma {
     have_pool?: BoolFilter<"Hotel"> | boolean
     image_url?: StringNullableFilter<"Hotel"> | string | null
     userId?: StringNullableFilter<"Hotel"> | string | null
+    price?: IntNullableFilter<"Hotel"> | number | null
     touristId?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
@@ -3475,6 +3496,7 @@ export namespace Prisma {
     have_pool?: SortOrder
     image_url?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
+    price?: SortOrderInput | SortOrder
     _count?: HotelCountOrderByAggregateInput
     _avg?: HotelAvgOrderByAggregateInput
     _max?: HotelMaxOrderByAggregateInput
@@ -3495,6 +3517,7 @@ export namespace Prisma {
     have_pool?: BoolWithAggregatesFilter<"Hotel"> | boolean
     image_url?: StringNullableWithAggregatesFilter<"Hotel"> | string | null
     userId?: StringNullableWithAggregatesFilter<"Hotel"> | string | null
+    price?: IntNullableWithAggregatesFilter<"Hotel"> | number | null
   }
 
   export type UserCreateInput = {
@@ -3555,6 +3578,7 @@ export namespace Prisma {
     have_spa?: boolean
     have_pool?: boolean
     image_url?: string | null
+    price?: number | null
     touristId?: UserCreateNestedOneWithoutHotelsInput
   }
 
@@ -3568,6 +3592,7 @@ export namespace Prisma {
     have_pool?: boolean
     image_url?: string | null
     userId?: string | null
+    price?: number | null
   }
 
   export type HotelUpdateInput = {
@@ -3578,6 +3603,7 @@ export namespace Prisma {
     have_spa?: BoolFieldUpdateOperationsInput | boolean
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     touristId?: UserUpdateOneWithoutHotelsNestedInput
   }
 
@@ -3591,6 +3617,7 @@ export namespace Prisma {
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type HotelCreateManyInput = {
@@ -3603,6 +3630,7 @@ export namespace Prisma {
     have_pool?: boolean
     image_url?: string | null
     userId?: string | null
+    price?: number | null
   }
 
   export type HotelUpdateManyMutationInput = {
@@ -3613,6 +3641,7 @@ export namespace Prisma {
     have_spa?: BoolFieldUpdateOperationsInput | boolean
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type HotelUncheckedUpdateManyInput = {
@@ -3625,6 +3654,7 @@ export namespace Prisma {
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3795,11 +3825,13 @@ export namespace Prisma {
     have_pool?: SortOrder
     image_url?: SortOrder
     userId?: SortOrder
+    price?: SortOrder
   }
 
   export type HotelAvgOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
+    price?: SortOrder
   }
 
   export type HotelMaxOrderByAggregateInput = {
@@ -3812,6 +3844,7 @@ export namespace Prisma {
     have_pool?: SortOrder
     image_url?: SortOrder
     userId?: SortOrder
+    price?: SortOrder
   }
 
   export type HotelMinOrderByAggregateInput = {
@@ -3824,11 +3857,13 @@ export namespace Prisma {
     have_pool?: SortOrder
     image_url?: SortOrder
     userId?: SortOrder
+    price?: SortOrder
   }
 
   export type HotelSumOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
+    price?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4100,6 +4135,7 @@ export namespace Prisma {
     have_spa?: boolean
     have_pool?: boolean
     image_url?: string | null
+    price?: number | null
   }
 
   export type HotelUncheckedCreateWithoutTouristIdInput = {
@@ -4111,6 +4147,7 @@ export namespace Prisma {
     have_spa?: boolean
     have_pool?: boolean
     image_url?: string | null
+    price?: number | null
   }
 
   export type HotelCreateOrConnectWithoutTouristIdInput = {
@@ -4152,6 +4189,7 @@ export namespace Prisma {
     have_pool?: BoolFilter<"Hotel"> | boolean
     image_url?: StringNullableFilter<"Hotel"> | string | null
     userId?: StringNullableFilter<"Hotel"> | string | null
+    price?: IntNullableFilter<"Hotel"> | number | null
   }
 
   export type UserCreateWithoutHotelsInput = {
@@ -4205,6 +4243,7 @@ export namespace Prisma {
     have_spa?: boolean
     have_pool?: boolean
     image_url?: string | null
+    price?: number | null
   }
 
   export type HotelUpdateWithoutTouristIdInput = {
@@ -4215,6 +4254,7 @@ export namespace Prisma {
     have_spa?: BoolFieldUpdateOperationsInput | boolean
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type HotelUncheckedUpdateWithoutTouristIdInput = {
@@ -4226,6 +4266,7 @@ export namespace Prisma {
     have_spa?: BoolFieldUpdateOperationsInput | boolean
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type HotelUncheckedUpdateManyWithoutTouristIdInput = {
@@ -4237,6 +4278,7 @@ export namespace Prisma {
     have_spa?: BoolFieldUpdateOperationsInput | boolean
     have_pool?: BoolFieldUpdateOperationsInput | boolean
     image_url?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 

@@ -133,7 +133,8 @@ exports.Prisma.HotelScalarFieldEnum = {
   have_spa: 'have_spa',
   have_pool: 'have_pool',
   image_url: 'image_url',
-  userId: 'userId'
+  userId: 'userId',
+  price: 'price'
 };
 
 exports.Prisma.SortOrder = {
