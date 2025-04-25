@@ -12,6 +12,7 @@ export async function POST(request: Request) {
         have_pool,
         image_url,
         price,
+        catagory,
         userId,
     } = body;
 
@@ -26,6 +27,7 @@ export async function POST(request: Request) {
                 have_pool: have_pool,
                 image_url: image_url,
                 price: price,
+                catagory: catagory,
                 userId: userId ? userId : null,
             },
         });

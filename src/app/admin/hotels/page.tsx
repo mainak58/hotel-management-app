@@ -4,6 +4,7 @@ import React, { ChangeEvent, useState } from "react";
 
 function Page() {
     const [image, setImages] = useState("");
+    const [catagory, setCatagory] = useState("beachfront");
     const [formData, setFormData] = useState({
         name: "",
         description: "",
@@ -56,6 +57,7 @@ function Page() {
                     have_spa: formData.have_spa,
                     have_pool: formData.have_pool,
                     price: Number(formData.price),
+                    catagory: catagory,
                     userId: formData.userId,
                 }),
             });
@@ -101,6 +103,19 @@ function Page() {
                         />
                     </div>
                 ))}
+
+                <label htmlFor="catagory">Choose catagory</label>
+                <select
+                    name="catagory"
+                    id="catagory"
+                    value={catagory}
+                    onChange={(e) => setCatagory(e.target.value)}
+                >
+                    <option value="beachfront">Beachfront</option>
+                    <option value="mountainview">Mountainview</option>
+                    <option value="citycenter">City Center</option>
+                    <option value="wellnessretreat">Wellness Retreat</option>
+                </select>
 
                 <div>
                     <label
