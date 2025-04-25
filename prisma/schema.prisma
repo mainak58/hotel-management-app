@@ -33,5 +33,6 @@ model Hotel {
   image_url   String?
   userId      String?
   price       Int?
+  catagory    String?
   touristId   User?   @relation(fields: [userId], references: [clerkId])
 }
