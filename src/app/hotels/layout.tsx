@@ -33,22 +33,18 @@ function layout({ children }: { children: React.ReactNode }) {
                             <Link href={"/hotels"}>All Properties</Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            <Link href={"/hotels?category=beachfront"}>
-                                Beachfront
-                            </Link>
+                            <Link href={"/hotels/beachfront"}>Beachfront</Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            <Link href={"/hotels?category=mountainview"}>
+                            <Link href={"/hotels/mountainview"}>
                                 Mountain View
                             </Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            <Link href={"/hotels?category=citycenter"}>
-                                City Center
-                            </Link>
+                            <Link href={"/hotels/citycenter"}>City Center</Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            <Link href={"/hotels?category=wellnessretreat"}>
+                            <Link href={"/hotels/wellnessretreat"}>
                                 Wellness Retreats
                             </Link>
                         </button>
