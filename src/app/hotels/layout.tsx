@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
 import React from "react";
 
 function layout({ children }: { children: React.ReactNode }) {
@@ -29,19 +30,27 @@ function layout({ children }: { children: React.ReactNode }) {
                 <div className="max-w-7xl mx-auto mb-12">
                     <div className="flex flex-wrap justify-center gap-3 mb-12">
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 transition-all">
-                            All Properties
+                            <Link href={"/hotels"}>All Properties</Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            Beachfront
+                            <Link href={"/hotels?category=beachfront"}>
+                                Beachfront
+                            </Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            Mountain View
+                            <Link href={"/hotels?category=mountainview"}>
+                                Mountain View
+                            </Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            City Center
+                            <Link href={"/hotels?category=citycenter"}>
+                                City Center
+                            </Link>
                         </button>
                         <button className="px-6 py-2 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200 hover:border-gray-300 transition-all">
-                            Wellness Retreats
+                            <Link href={"/hotels?category=wellnessretreat"}>
+                                Wellness Retreats
+                            </Link>
                         </button>
                     </div>
                 </div>
