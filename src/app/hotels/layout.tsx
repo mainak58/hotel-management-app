@@ -1,8 +1,10 @@
+import Navbar from "@/components/Navbar";
 import React from "react";
 
 function layout({ children }: { children: React.ReactNode }) {
     return (
         <>
+            <Navbar />
             <div className="min-h-screen  bg-fixed bg-white py-24 px-4 sm:px-8">
                 <div className="max-w-7xl mx-auto mb-20">
                     <div className="text-center relative">
