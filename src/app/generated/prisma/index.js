@@ -160,7 +160,8 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../../.env"
   },
   "relativePath": "../../../../prisma",
   "clientVersion": "6.6.0",
@@ -180,7 +181,7 @@ const config = {
   },
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id      Int     @id @default(autoincrement())\n  email   String  @unique\n  name    String?\n  clerkId String? @unique\n  hotels  Hotel[]\n}\n\nmodel Hotel {\n  id          Int     @id @default(autoincrement())\n  name        String\n  description String?\n  rating      Int?\n  location    String?\n  have_spa    Boolean @default(false)\n  have_pool   Boolean @default(false)\n  image_url   String?\n  userId      String?\n  price       Int?\n  catagory    String?\n  touristId   User?   @relation(fields: [userId], references: [clerkId])\n}\n",
   "inlineSchemaHash": "4d6a9c6ac6bd2f74835e84ba600b9c0e67987367fe41193e1d1973675deb9bb6",
-  "copyEngine": true
+  "copyEngine": false
 }
 
 const fs = require('fs')
@@ -217,9 +218,3 @@ const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
-// file annotations for bundling tools to include these files
-path.join(__dirname, "query_engine-windows.dll.node");
-path.join(process.cwd(), "src/app/generated/prisma/query_engine-windows.dll.node")
-// file annotations for bundling tools to include these files
-path.join(__dirname, "schema.prisma");
-path.join(process.cwd(), "src/app/generated/prisma/schema.prisma")

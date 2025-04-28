@@ -18,7 +18,7 @@ export default function Page() {
             try {
                 setLoading(true);
                 const response = await fetch(
-                    `/api/hotels/${categoryFromParams}` // ✅ correct now
+                    `/api/hotels/${categoryFromParams}`
                 );
 
                 if (!response.ok) {
