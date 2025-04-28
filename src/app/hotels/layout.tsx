@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import PremiumHotelFooter from "@/components/Footer";
 import Link from "next/link";
 import React from "react";
 
@@ -6,10 +7,24 @@ function layout({ children }: { children: React.ReactNode }) {
     return (
         <>
             <Navbar />
+
+            <div className="bg-gradient-to-r from-amber-600 to-amber-800 text-white py-4">
+                <div className="max-w-7xl mx-auto px-4 flex justify-center items-center">
+                    <span className="text-sm font-medium mr-2">✨</span>
+                    <p className="text-sm font-medium">
+                        Exclusive Summer Offer: Enjoy 20% off selected luxury
+                        accommodations
+                    </p>
+                    <button className="ml-4 text-xs uppercase tracking-wider border border-white/30 rounded-full px-3 py-1 hover:bg-white/20 transition-colors">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+
             <div className="min-h-screen  bg-fixed bg-white py-24 px-4 sm:px-8">
                 <div className="max-w-7xl mx-auto mb-20">
                     <div className="text-center relative">
-                        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full opacity-70"></div>
+                        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-1"></div>
                         <h1 className="text-4xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
                             Extraordinary{" "}
                             <span className="italic font-serif text-amber-600">
@@ -77,6 +92,7 @@ function layout({ children }: { children: React.ReactNode }) {
                     </div>
                 </div>
             </div>
+            <PremiumHotelFooter />
         </>
     );
 }
