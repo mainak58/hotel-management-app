@@ -141,7 +141,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\sayan\\OneDrive\\Desktop\\hotel-app\\src\\app\\generated\\prisma",
+      "value": "C:\\Users\\MAINAK\\Desktop\\hotel-app\\src\\app\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -155,12 +155,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\sayan\\OneDrive\\Desktop\\hotel-app\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\MAINAK\\Desktop\\hotel-app\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../../prisma",
   "clientVersion": "6.6.0",
@@ -169,17 +168,18 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiOGUxZTY4OTYtNzY2My00OWUyLTg3NzItNTI5NzZmY2EyODgwIiwidGVuYW50X2lkIjoiMzUxMzFmNDA3MjhjMmNjZWEzNmMzNDk4NGY5Y2QyODUyZTgzZmRiYzJlODIwOTkzNmFjYTg5NGJjMTgzOTNiYiIsImludGVybmFsX3NlY3JldCI6Ijg0Zjg5MDQ3LWI2MzYtNDgxYS05NjMzLWE4ODAxMmU5NWNlNyJ9.fQx6bFvCiQzCLwMBzUodZJrIakw13QM9_uMrZQB7xAg"
+        "value": null
       }
     }
   },
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id      Int     @id @default(autoincrement())\n  email   String  @unique\n  name    String?\n  clerkId String? @unique\n  hotels  Hotel[]\n}\n\nmodel Hotel {\n  id          Int     @id @default(autoincrement())\n  name        String\n  description String?\n  rating      Int?\n  location    String?\n  have_spa    Boolean @default(false)\n  have_pool   Boolean @default(false)\n  image_url   String?\n  userId      String?\n  price       Int?\n  catagory    String?\n  touristId   User?   @relation(fields: [userId], references: [clerkId])\n}\n",
   "inlineSchemaHash": "4d6a9c6ac6bd2f74835e84ba600b9c0e67987367fe41193e1d1973675deb9bb6",
-  "copyEngine": false
+  "copyEngine": true
 }
 config.dirname = '/'
 
