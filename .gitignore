@@ -86,3 +86,5 @@ junit.xml
 package.copy.json
 
 *.tgz
+# clerk configuration (can include secrets)
+/.clerk/
