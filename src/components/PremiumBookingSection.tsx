@@ -1,23 +1,71 @@
+"use client";
+
 import Image from "next/image";
 import bedroom from "../../assets/bedroom-8242523_640.jpg";
 import greec from "../../assets/greece-844269_640.jpg";
 import hotel from "../../assets/hotel-1831072_640.jpg";
 import swimming from "../../assets/swimming-pool-2128578_640.jpg";
+import { useEffect, useState } from "react";
 
 export default function PremiumHotelShowcase() {
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        // Check for saved dark mode preference
+        const savedDarkMode = localStorage.getItem("darkMode") === "true";
+        setDarkMode(savedDarkMode);
+
+        // Listen for dark mode changes from other components
+        const handleDarkModeChange = () => {
+            setDarkMode(document.documentElement.classList.contains("dark"));
+        };
+
+        // Use MutationObserver to detect class changes on html element
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (
+                    mutation.attributeName === "class" &&
+                    mutation.target === document.documentElement
+                ) {
+                    handleDarkModeChange();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, { attributes: true });
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <section className="flex flex-col items-center justify-center py-24 bg-gradient-to-b from-white to-gray-50 text-black">
+        <section
+            className={`flex flex-col items-center justify-center py-24 transition-colors duration-300 ${
+                darkMode
+                    ? "bg-gradient-to-b from-gray-900 to-gray-950 text-white"
+                    : "bg-gradient-to-b from-white to-gray-50 text-black"
+            }`}
+        >
             <div className="w-full max-w-6xl px-6">
                 <h2 className="text-4xl font-light mb-3 text-center tracking-wide">
                     <span className="font-medium">Extraordinary</span>{" "}
                     Destinations
                 </h2>
-                <p className="text-lg text-gray-600 mb-16 max-w-2xl mx-auto text-center">
+                <p
+                    className={`text-lg mb-16 max-w-2xl mx-auto text-center ${
+                        darkMode ? "text-gray-300" : "text-gray-600"
+                    }`}
+                >
                     Discover our curated collection of premium accommodations
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-lg hover:shadow-xl group relative cursor-pointer">
+                    <div
+                        className={`aspect-[4/5] overflow-hidden rounded-2xl group relative cursor-pointer ${
+                            darkMode
+                                ? "shadow-lg shadow-blue-900/10 hover:shadow-xl hover:shadow-blue-900/20"
+                                : "shadow-lg hover:shadow-xl"
+                        }`}
+                    >
                         <Image
                             src={bedroom}
                             alt="Luxury Bedroom"
@@ -35,7 +83,13 @@ export default function PremiumHotelShowcase() {
                         </div>
                     </div>
 
-                    <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-lg hover:shadow-xl group relative cursor-pointer">
+                    <div
+                        className={`aspect-[4/5] overflow-hidden rounded-2xl group relative cursor-pointer ${
+                            darkMode
+                                ? "shadow-lg shadow-blue-900/10 hover:shadow-xl hover:shadow-blue-900/20"
+                                : "shadow-lg hover:shadow-xl"
+                        }`}
+                    >
                         <Image
                             src={greec}
                             alt="Greece"
@@ -53,7 +107,13 @@ export default function PremiumHotelShowcase() {
                         </div>
                     </div>
 
-                    <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-lg hover:shadow-xl group relative cursor-pointer">
+                    <div
+                        className={`aspect-[4/5] overflow-hidden rounded-2xl group relative cursor-pointer ${
+                            darkMode
+                                ? "shadow-lg shadow-blue-900/10 hover:shadow-xl hover:shadow-blue-900/20"
+                                : "shadow-lg hover:shadow-xl"
+                        }`}
+                    >
                         <Image
                             src={hotel}
                             alt="Hotel"
@@ -71,7 +131,13 @@ export default function PremiumHotelShowcase() {
                         </div>
                     </div>
 
-                    <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-lg hover:shadow-xl group relative cursor-pointer">
+                    <div
+                        className={`aspect-[4/5] overflow-hidden rounded-2xl group relative cursor-pointer ${
+                            darkMode
+                                ? "shadow-lg shadow-blue-900/10 hover:shadow-xl hover:shadow-blue-900/20"
+                                : "shadow-lg hover:shadow-xl"
+                        }`}
+                    >
                         <Image
                             src={swimming}
                             alt="Swimming Pool"
@@ -91,7 +157,13 @@ export default function PremiumHotelShowcase() {
                 </div>
 
                 <div className="flex justify-center mt-16">
-                    <button className="px-8 py-3 border border-black hover:bg-black hover:text-white transition-all duration-300 text-lg font-light tracking-wide">
+                    <button
+                        className={`px-8 py-3 text-lg font-light tracking-wide transition-all duration-300 ${
+                            darkMode
+                                ? "border border-white hover:bg-white hover:text-gray-900"
+                                : "border border-black hover:bg-black hover:text-white"
+                        }`}
+                    >
                         Explore All Destinations
                     </button>
                 </div>
