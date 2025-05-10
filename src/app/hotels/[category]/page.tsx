@@ -1,11 +1,7 @@
 import { Suspense } from "react";
 import HotelsByCategory from "@/components/HotelsByCategory";
 
-interface PageProps {
-    params: { category: string };
-}
-
-export default function Page({ params }: PageProps) {
+export default async function Page(params: { category: string }) {
     return (
         <div className="max-w-7xl mx-auto">
             <Suspense
