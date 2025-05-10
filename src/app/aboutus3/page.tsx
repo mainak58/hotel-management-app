@@ -2,14 +2,14 @@ import React from "react";
 import { User } from "../../..";
 
 async function page() {
-    const body = await fetch(
+    const response = await fetch(
         "https://67eb83f3aa794fb3222a8348.mockapi.io/user"
     );
-    const res: User[] = await body.json();
+    const users: User[] = await response.json();
     return (
         <>
             <h1>Hello World (simple)</h1>
-            {res.map((i) => (
+            {users.map((i) => (
                 <div key={i.id}>
                     <p>{i.name}</p>
                     <p>{i.fullname}</p>
